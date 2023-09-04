@@ -9,26 +9,20 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *node, *next;
+	listint_t *slow, *fast;
 
 	if (!list)
 		return (0);
 
-	node = list;
-	next = list->next;
+	slow = list;
+	fast = list;
 
-	while (next)
+	while (fast && fast->next)
 	{
-		if (next == next->next)
+		slow = slow->next;
+		fast = fast->next->next;
+		if (fast == slow)
 			return (1);
-		while (node != next)
-		{
-			if (node == next->next)
-				return (1);
-			node = node->next;
-		}
-		node = list;
-		next = next->next;
 	}
 	return (0);
 }
