@@ -30,7 +30,7 @@ listint_t *insert_node(listint_t **head, int number)
 		pre = after;
 		after = after->next;
 	}
-	if (after->n > number)
+	if (after->n >= number)
 	{
 		if (pre == *head)
 		{
