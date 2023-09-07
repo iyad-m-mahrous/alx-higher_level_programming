@@ -7,6 +7,9 @@ def task2():
     count = 0
     if length == 0:
         print('0 arguments.')
+    elif length == 1:
+        print(f'1 argument:')
+        print(f'1: {sys.argv[1]}')
     else:
         print(f'{length} arguments:')
         for args in sys.argv[1:]:
