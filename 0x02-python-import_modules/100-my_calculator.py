@@ -16,14 +16,17 @@ def task6():
         print('Unknown operator. Available operators: +, -, * and /')
         sys.exit(1)
 
+    a = int(args[0])
+    b = int(args[2])
+
     if args[1] == '+':
-        result = add(int(args[0]), int(args[2]))
+        result = add(a, b)
     elif args[1] == '-':
-        result = sub(int(args[0]), int(args[2]))
+        result = sub(a, b)
     elif args[1] == '*':
-        result = mul(int(args[0]), int(args[2]))
+        result = mul(a, b)
     else:
-        result = div(int(args[0]), int(args[2]))
+        result = div(a, b)
 
     print(f'{args[0]} {args[1]} {args[2]} = {result}')
 
