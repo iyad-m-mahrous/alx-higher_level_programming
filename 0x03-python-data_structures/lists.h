@@ -1,7 +1,7 @@
 #ifndef LISTS_H
 #define LISTS_H
 #include <stddef.h>
-#include <object.h>
+#include <Python.h>
 
 typedef struct _object PyObject;
 /**
