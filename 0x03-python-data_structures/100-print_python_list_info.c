@@ -1,3 +1,4 @@
+#define PYTHON_H
 #include <stdio.h>
 #include "lists.h"
 
