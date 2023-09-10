@@ -8,7 +8,7 @@
  * Return: void
  */
 
-void print_python_list_info(void *p)
+void print_python_list_info(PyObject *p)
 {
 	PyObject *item;
 	Py_ssize_t l_size, i;
