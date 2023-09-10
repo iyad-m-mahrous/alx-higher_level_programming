@@ -2,7 +2,6 @@
 #define LISTS_H
 #include <stddef.h>
 
-typedef struct _object PyObject;
 /**
  * struct listint_s - singly linked list
  * @n: integer
