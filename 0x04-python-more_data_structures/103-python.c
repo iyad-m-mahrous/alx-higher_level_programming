@@ -51,11 +51,11 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", PyBytes_AsString(p));
 
 	printf("  first %ld bytes: ",
-		   PyBytes_GET_SIZE(p) < 10 ? PyBytes_GET_SIZE(p) : 10);
-	for (Py_ssize_t i = 0; i < 10 && i < PyBytes_GET_SIZE(p); i++)
+		   PyBytes_GET_SIZE(p) + 1 < 11 ? PyBytes_GET_SIZE(p) + 1 : 10);
+	for (Py_ssize_t i = 0; i < 10 && i <= PyBytes_GET_SIZE(p); i++)
 	{
 		printf("%02x", (unsigned char)PyBytes_AsString(p)[i]);
-		if (i < PyBytes_GET_SIZE(p) - 1)
+		if (i < PyBytes_GET_SIZE(p))
 			printf(" ");
 	}
 	printf("\n");
