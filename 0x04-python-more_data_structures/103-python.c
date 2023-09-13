@@ -54,7 +54,7 @@ void print_python_bytes(PyObject *p)
 	printf("  trying string: %s\n", bytes->ob_sval);
 
 	size = ((PyVarObject *)p)->ob_size;
-	size = size > 10 ? 10 : size;
+	size = size > 10 ? 10 : size++;
 	printf("  first %d bytes: ", size);
 	for (i = 0; i < size; i++)
 	{
