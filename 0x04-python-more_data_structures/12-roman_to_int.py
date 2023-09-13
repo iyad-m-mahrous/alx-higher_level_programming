@@ -9,11 +9,9 @@ def roman_to_int(roman_string):
     num = 0
     prev = 0
     for i in roman_string:
-        for j in roman_values:
-            if i == j:
-                num = roman_values[j]
-                if prev < num:
-                    prev = num - prev
-                else:
-                    prev += num
+        num = roman_values[i]
+        if prev < num:
+            prev = num - prev
+        else:
+            prev += num
     return prev
