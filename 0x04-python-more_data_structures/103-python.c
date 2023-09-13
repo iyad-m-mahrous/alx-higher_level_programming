@@ -13,7 +13,7 @@ void print_python_list(PyObject *p)
 {
 	if (!PyList_Check(p))
 	{
-		printf("[*] Python list info\n");
+		fprintf("[*] Python list info\n");
 		fprintf(stderr, "  [ERROR] Invalid List Object\n");
 		return;
 	}
@@ -49,7 +49,7 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
 	printf("  trying string: %s\n", ((PyBytesObject *)p)->ob_sval);
 
-	printf("  first %d bytes: ", ((PyVarObject *)p)->ob_size);
+	printf("  first %ld bytes: ", ((PyVarObject *)p)->ob_size);
 	for (Py_ssize_t i = 0; i <= ((PyVarObject *)p)->ob_size; i++)
 	{
 		printf("%02x", (unsigned char)(((PyBytesObject *)p)->ob_sval[i]));
