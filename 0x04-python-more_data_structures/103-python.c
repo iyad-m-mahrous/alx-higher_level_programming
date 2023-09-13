@@ -11,7 +11,7 @@ void print_python_bytes(PyObject *p);
  */
 void print_python_bytes(PyObject *p)
 {
-        unsigned int i, size;
+        int i, size;
         PyBytesObject *bytes = (PyBytesObject *)p;
 
         printf("[.] bytes object info\n");
