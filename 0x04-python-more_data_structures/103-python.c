@@ -27,6 +27,8 @@ void print_python_list(PyObject *p)
 	{
 		printf("Element %ld: %s\n", i,
 			   ((PyObject *)((PyListObject *)p)->ob_item[i])->ob_type->tp_name);
+		if (!strcmp(Py_TYPE(((PyListObject *)p)->ob_item[i])->tp_name, "bytes"))
+			print_python_bytes(((PyObject *)((PyListObject *)p)->ob_item[i]));
 	}
 }
 
