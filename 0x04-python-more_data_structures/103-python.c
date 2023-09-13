@@ -13,7 +13,7 @@ void print_python_list(PyObject *p)
 {
 	if (!PyList_Check(p))
 	{
-		fprintf("[*] Python list info\n");
+		fprintf(stderr, "[*] Python list info\n");
 		fprintf(stderr, "  [ERROR] Invalid List Object\n");
 		return;
 	}
