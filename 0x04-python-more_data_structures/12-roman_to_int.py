@@ -2,16 +2,24 @@
 def roman_to_int(roman_string):
     if not isinstance(roman_string, str) or not roman_string:
         return 0
+
     roman_values = {
-            'I': 1, 'V': 5, 'X': 10, 'L': 50,
-            'C': 100, 'D': 500, 'M': 1000
-            }
-    num = 0
-    prev = 0
-    for i in roman_string:
-        num = roman_values[i]
-        if prev < num:
-            prev = num - prev
+        'I': 1, 'V': 5, 'X': 10, 'L': 50,
+        'C': 100, 'D': 500, 'M': 1000
+    }
+
+    total = 0
+    prev_value = 0
+
+    for symbol in roman_string[::-1]:
+        value = roman_values[symbol]
+
+        # If the previous value is less than the current value, subtract it.
+        if prev_value > value:
+            total -= value
         else:
-            prev += num
-    return prev
+            total += value
+
+        prev_value = value
+
+    return total
