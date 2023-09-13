@@ -14,7 +14,6 @@ def roman_to_int(roman_string):
     for symbol in roman_string[::-1]:
         value = roman_values[symbol]
 
-        # If the previous value is less than the current value, subtract it.
         if prev_value > value:
             total -= value
         else:
