@@ -49,11 +49,11 @@ void print_python_bytes(PyObject *p)
 	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
 	printf("  trying string: %s\n", ((PyBytesObject *)p)->ob_sval);
 
-	printf("  first 10 bytes: ");
-	for (Py_ssize_t i = 0; i < 10 && i < ((PyVarObject *)p)->ob_size; i++)
+	printf("  first %ld bytes: ", ((PyVarObject *)p)->ob_size + 1);
+	for (Py_ssize_t i = 0; i <= ((PyVarObject *)p)->ob_size; i++)
 	{
 		printf("%02x", (unsigned char)(((PyBytesObject *)p)->ob_sval[i]));
-		if (i < 9 && i < ((PyVarObject *)p)->ob_size - 1)
+		if (i < ((PyVarObject *)p)->ob_size)
 			printf(" ");
 	}
 	printf("\n");
