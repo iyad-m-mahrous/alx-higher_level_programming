@@ -1,5 +1,13 @@
 #include <Python.h>
+void print_python_list(PyObject *p);
+void print_python_bytes(PyObject *p);
 
+/**
+ * print_python_bytes - prints Python list info
+ * @p: Python object (list)
+ *
+ * Return: None
+ */
 void print_python_bytes(PyObject *p)
 {
 	printf("[.] bytes object info\n");
@@ -26,6 +34,12 @@ void print_python_bytes(PyObject *p)
 	}
 }
 
+/**
+ * print_python_list - prints Python bytes info
+ * @p: Python object (bytes)
+ *
+ * Return: None
+ */
 void print_python_list(PyObject *p)
 {
 	printf("[*] Python list info\n");
