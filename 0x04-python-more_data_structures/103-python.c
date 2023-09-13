@@ -11,26 +11,23 @@ void print_python_bytes(PyObject *p);
  */
 void print_python_list(PyObject *p)
 {
-    if (!PyList_Check(p))
-    {
-        fprintf(stderr, "[*] Python list info\n");
-        fprintf(stderr, "  [ERROR] Invalid List Object\n");
-        return;
-    }
+	if (!PyList_Check(p))
+	{
+		fprintf(stderr, "[*] Python list info\n");
+		fprintf(stderr, "  [ERROR] Invalid List Object\n");
+		return;
+	}
 
-    printf("[*] Python list info\n");
-    printf("[*] Size of the Python List = %ld\n", PyList_GET_SIZE(p)); // Use PyList_GET_SIZE to get the size
+	printf("[*] Python list info\n");
+	printf("[*] Size of the Python List = %ld\n", PyList_GET_SIZE(p));
 
-    // Allocated memory for a list is not directly accessible without restricted macros/functions
-    // You can skip printing the "Allocated" line since it's not easily accessible
-
-    for (Py_ssize_t i = 0; i < PyList_GET_SIZE(p); i++)
-    {
-        printf("Element %ld: %s\n", i,
-               Py_TYPE(PyList_GetItem(p, i))->tp_name);
-        if (!strcmp(Py_TYPE(PyList_GetItem(p, i))->tp_name, "bytes"))
-            print_python_bytes(PyList_GetItem(p, i));
-    }
+	for (Py_ssize_t i = 0; i < PyList_GET_SIZE(p); i++)
+	{
+		printf("Element %ld: %s\n", i,
+			   Py_TYPE(PyList_GetItem(p, i))->tp_name);
+		if (!strcmp(Py_TYPE(PyList_GetItem(p, i))->tp_name, "bytes"))
+			print_python_bytes(PyList_GetItem(p, i));
+	}
 }
 
 /**
@@ -41,26 +38,26 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-    if (!PyBytes_Check(p))
-    {
-        printf("[.] bytes object info\n");
-        fprintf(stderr, "  [ERROR] Invalid Bytes Object\n");
-        return;
-    }
+	if (!PyBytes_Check(p))
+	{
+		printf("[.] bytes object info\n");
+		fprintf(stderr, "  [ERROR] Invalid Bytes Object\n");
+		return;
+	}
 
-    printf("[.] bytes object info\n");
-    printf("  size: %ld\n", PyBytes_GET_SIZE(p)); // Use PyBytes_GET_SIZE to get the size
+	printf("[.] bytes object info\n");
+	printf("  size: %ld\n", PyBytes_GET_SIZE(p));
 
-    printf("  trying string: %s\n", PyBytes_AsString(p)); // Use PyBytes_AsString to get the string
+	printf("  trying string: %s\n", PyBytes_AsString(p));
 
-    printf("  first %ld bytes: ",
-           PyBytes_GET_SIZE(p) < 10 ? PyBytes_GET_SIZE(p) : 10); // Adjust to get the first 10 bytes
-    for (Py_ssize_t i = 0; i < 10 && i < PyBytes_GET_SIZE(p); i++)
-    {
-        printf("%02x", (unsigned char)PyBytes_AsString(p)[i]);
-        if (i < PyBytes_GET_SIZE(p) - 1)
-            printf(" ");
-    }
-    printf("\n");
+	printf("  first %ld bytes: ",
+		   PyBytes_GET_SIZE(p) < 10 ? PyBytes_GET_SIZE(p) : 10);
+	for (Py_ssize_t i = 0; i < 10 && i < PyBytes_GET_SIZE(p); i++)
+	{
+		printf("%02x", (unsigned char)PyBytes_AsString(p)[i]);
+		if (i < PyBytes_GET_SIZE(p) - 1)
+			printf(" ");
+	}
+	printf("\n");
 }
 
