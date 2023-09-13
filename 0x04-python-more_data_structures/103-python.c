@@ -3,8 +3,8 @@ void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 
 /**
- * print_python_bytes - prints Python list info
- * @p: Python object (list)
+ * print_python_list - prints Python list info
+ * @p: Python object
  *
  * Return: None
  */
@@ -12,7 +12,7 @@ void print_python_list(PyObject *p)
 {
 	int size, allocation, i;
 	const char *tpname;
-	
+
 	PyListObject *list = (PyListObject *)p;
 	PyVarObject *var = (PyVarObject *)p;
 
@@ -33,8 +33,8 @@ void print_python_list(PyObject *p)
 }
 
 /**
- * print_python_list - prints Python bytes info
- * @p: Python object (bytes)
+ * print_python_bytes - prints Python bytes info
+ * @p: Python object
  *
  * Return: None
  */
@@ -42,9 +42,8 @@ void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t i, size;
 	PyBytesObject *bytes = (PyBytesObject *)p;
-	
+
 	size = ((PyVarObject *)p)->ob_size;
-	
 
 	printf("[.] bytes object info\n");
 	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
