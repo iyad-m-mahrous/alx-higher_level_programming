@@ -12,13 +12,13 @@ void print_python_float(PyObject *p);
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, list_alloc, i;
-	const char *obj_type;
+	Py_ssize_t size, lis_count, i;
+	const char *type;
 	PyListObject *list = (PyListObject *)p;
 	PyVarObject *var = (PyVarObject *)p;
 
 	size = var->ob_size;
-	list_alloc = list->allocated;
+	lis_count = list->allocated;
 	fflush(stdout);
 	printf("[*] Python list info\n");
 	if (strcmp(p->ob_type->tp_name, "list") != 0)
@@ -27,14 +27,14 @@ void print_python_list(PyObject *p)
 		return;
 	}
 	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", list_alloc);
+	printf("[*] Allocated = %ld\n", lis_count);
 	for (i = 0; i < size; i++)
 	{
-		obj_type = list->ob_item[i]->ob_type->tp_name;
-		printf("Element %ld: %s\n", i, obj_type);
-		if (strcmp(obj_type, "bytes") == 0)
+		type = list->ob_item[i]->ob_type->tp_name;
+		printf("Element %ld: %s\n", i, type);
+		if (strcmp(type, "bytes") == 0)
 			print_python_bytes(list->ob_item[i]);
-		else if (strcmp(obj_type, "float") == 0)
+		else if (strcmp(type, "float") == 0)
 			print_python_float(list->ob_item[i]);
 	}
 }
@@ -48,24 +48,21 @@ void print_python_list(PyObject *p)
 void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t size, i;
-
-	printf("[.] bytes object info\n");
-	if (!PyBytes_Check(p))
-	{
-		PyErr_SetString(PyExc_TypeError, "Invalid Bytes Object");
-		return;
-	}
-
 	PyBytesObject *bytes = (PyBytesObject *)p;
 
-	size = Py_SIZE(p);
-
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", PyBytes_AsString(p));
-
-	if (size >= 10)
+	fflush(stdout);
+	printf("[.] bytes object info\n");
+	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
+	{
+		printf("  [ERROR] Invalid Bytes Object\n");
+		return;
+	}
+	printf("  size: %ld\n", ((PyVarObject *)p)->ob_size);
+	printf("  trying string: %s\n", bytes->ob_sval);
+	if (((PyVarObject *)p)->ob_size >= 10)
 		size = 10;
-
+	else
+		size = ((PyVarObject *)p)->ob_size + 1;
 	printf("  first %ld bytes: ", size);
 	for (i = 0; i < size; i++)
 	{
@@ -76,7 +73,6 @@ void print_python_bytes(PyObject *p)
 			printf(" ");
 	}
 }
-
 
 /**
  * print_python_float - Prints basic info about Python float objects.
