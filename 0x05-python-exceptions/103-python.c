@@ -12,26 +12,25 @@ void print_python_float(PyObject *p);
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, i;
+	Py_ssize_t size, list_alloc, i;
 	const char *obj_type;
+	PyListObject *list = (PyListObject *)p;
+	PyVarObject *var = (PyVarObject *)p;
 
+	size = var->ob_size;
+	list_alloc = list->allocated;
+	fflush(stdout);
 	printf("[*] Python list info\n");
-	if (!PyList_Check(p))
+	if (strcmp(p->ob_type->tp_name, "list") != 0)
 	{
-		PyErr_SetString(PyExc_TypeError, "Invalid List Object");
+		printf("  [ERROR] Invalid List Object\n");
 		return;
 	}
-
-	PyListObject *list = (PyListObject *)p;
-
-	size = Py_SIZE(p);
-
 	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", list->allocated);
-
+	printf("[*] Allocated = %ld\n", list_alloc);
 	for (i = 0; i < size; i++)
 	{
-		obj_type = Py_TYPE(list->ob_item[i])->tp_name;
+		obj_type = list->ob_item[i]->ob_type->tp_name;
 		printf("Element %ld: %s\n", i, obj_type);
 		if (strcmp(obj_type, "bytes") == 0)
 			print_python_bytes(list->ob_item[i]);
@@ -39,7 +38,6 @@ void print_python_list(PyObject *p)
 			print_python_float(list->ob_item[i]);
 	}
 }
-
 
 /**
  * print_python_bytes - Prints basic info about Python byte objects.
