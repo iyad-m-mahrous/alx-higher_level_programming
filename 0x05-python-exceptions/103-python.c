@@ -12,7 +12,7 @@ void print_python_float(PyObject *p);
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, list_count, i;
+	Py_ssize_t size, list_count, i = 0;
 	const char *obj_type;
 
 	size = ((PyVarObject *)p)->ob_size;
@@ -45,7 +45,7 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	Py_ssize_t size, i;
+	Py_ssize_t size, i = 0;
 
 	fflush(stdout);
 	printf("[.] bytes object info\n");
@@ -64,11 +64,10 @@ void print_python_bytes(PyObject *p)
 	for (i = 0; i < size; i++)
 	{
 		printf("%02hhx", ((PyBytesObject *)p)->ob_sval[i]);
-		if (i == (size - 1))
-			printf("\n");
-		else
+		if (i != (size - 1))
 			printf(" ");
 	}
+	printf("\n");
 }
 
 /**
