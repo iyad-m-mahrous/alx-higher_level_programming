@@ -84,4 +84,6 @@ class Square:
                 result += ' '
             for j in range(self.size):
                 result += '#'
-            result += '\n'
+            if i < (self.size-1):
+                result += '\n'
+        return result
