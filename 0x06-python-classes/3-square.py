@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Area of a square"""
 
 
 class Square:
