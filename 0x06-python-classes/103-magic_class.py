@@ -1,8 +1,14 @@
 #!/usr/bin/python3
+
+
 """A class that represents a magic circle."""
 
 
+import math
+
+
 class MagicClass:
+    """Circle Class"""
 
     def __init__(self, radius=0):
         """
