@@ -1,15 +1,5 @@
 #!/usr/bin/python3
-"""A class that represents a magic circle.
-
-Attributes:
-    radius: The radius of the circle.
-
-Methods:
-    area(): Calculates the area of the circle.
-    circumference(): Calculates the circumference of the circle.
-"""
-
-import math
+"""A class that represents a magic circle."""
 
 
 class MagicClass:
