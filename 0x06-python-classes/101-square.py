@@ -75,7 +75,6 @@ class Square:
     def __str__(self):
         result = ""
         if self.size == 0:
-            result += '\n'
             return result
         for y_pos in range(self.position[1]):
             result += '\n'
