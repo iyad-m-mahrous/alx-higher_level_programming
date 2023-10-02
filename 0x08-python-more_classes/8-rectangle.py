@@ -5,7 +5,6 @@
 class Rectangle:
     """Rectangle Class"""
 
-
     number_of_instances = 0
     print_symbol = "#"
 
