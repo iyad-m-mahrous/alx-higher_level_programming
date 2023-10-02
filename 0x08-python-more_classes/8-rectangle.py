@@ -5,6 +5,7 @@
 class Rectangle:
     """Rectangle Class"""
 
+
     number_of_instances = 0
     print_symbol = "#"
 
@@ -19,10 +20,12 @@ class Rectangle:
 
     def __str__(self):
         result = ""
+        if (self.width == 0 or self.height == 0):
+            return result
         for h in range(self.height):
             for w in range(self.width):
                 result += str(self.print_symbol)
-            if (w != 0):
+            if (h != self.height - 1):
                 result += "\n"
         return result
 
