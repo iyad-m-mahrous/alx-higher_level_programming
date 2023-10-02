@@ -14,7 +14,7 @@ class Rectangle:
         for h in range(self.height):
             for w in range(self.width):
                 result += "#"
-            if (w != 0):
+            if (self.width != 0):
                 result += "\n"
         return result
 
