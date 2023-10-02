@@ -23,7 +23,7 @@ class Rectangle:
             return result
         for h in range(self.height):
             for w in range(self.width):
-                result += "#"
+                result += str(self.print_symbol)
             if (h != self.height - 1):
                 result += "\n"
         return result
