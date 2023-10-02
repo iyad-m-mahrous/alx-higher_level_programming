@@ -57,11 +57,11 @@ class Board:
 
         for c in range(self.n):
             if board[row][c] == " ":
-                tmp_board = self.board_copy(board)
-                tmp_board[row][c] = "Q"
-                self.set_surrounding(tmp_board, row, c)
+                temp_board = self.board_copy(board)
+                temp_board[row][c] = "Q"
+                self.set_surrounding(temp_board, row, c)
                 solutions = self.recursive_solve(
-                        tmp_board, row + 1,
+                        temp_board, row + 1,
                         queens + 1, solutions
                         )
         return (solutions)
@@ -80,5 +80,5 @@ if __name__ == "__main__":
 
     board = Board(int(sys.argv[1]))
     solutions = board.recursive_solve(board.board, 0, 0, [])
-    for sol in solutions:
-        print(sol)
+    for i in solutions:
+        print(i)
