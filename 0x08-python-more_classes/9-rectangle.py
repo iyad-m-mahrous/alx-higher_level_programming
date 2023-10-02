@@ -5,6 +5,7 @@
 class Rectangle:
     """Rectangle Class"""
 
+
     number_of_instances = 0
     print_symbol = "#"
 
@@ -19,10 +20,12 @@ class Rectangle:
 
     def __str__(self):
         result = ""
+        if (self.width == 0 or self.height == 0):
+            return result
         for h in range(self.height):
             for w in range(self.width):
                 result += str(self.print_symbol)
-            if (w != 0):
+            if (h != self.height - 1):
                 result += "\n"
         return result
 
@@ -70,7 +73,7 @@ class Rectangle:
         if (not isinstance(rect_2, Rectangle)):
             raise TypeError("rect_2 must be an instance of Rectangle")
 
-        return (rect1 if rect_1.area() >= rect_2.area() else rect_2)
+        return (rect_1 if rect_1.area() >= rect_2.area() else rect_2)
 
     @classmethod
     def square(cls, size=0):
