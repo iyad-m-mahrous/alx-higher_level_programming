@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""Solves the N-queens puzzle"""
-
-
 import sys
+"""Solves the N-queens puzzle"""
 
 
 class Board:
