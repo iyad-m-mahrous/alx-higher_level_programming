@@ -3,7 +3,12 @@
 
 
 def matrix_mul(m_a, m_b):
-    """def matrix_mul(m_a, m_b)"""
+    """def matrix_mul(m_a, m_b)
+
+    Args:
+        m_a (list): rectangle matrix
+        m_b (list): rectangle matrix
+    """
 
     if (not isinstance(m_a, list)):
         raise TypeError("m_a must be a list")
