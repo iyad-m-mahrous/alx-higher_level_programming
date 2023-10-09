@@ -6,7 +6,7 @@ class MyInt(int):
     """Invert int operators == and !=."""
 
     def __ne__(self, other):
-        return (super.__eq__(other))
+        return (super().__eq__(cother))
 
     def __eq__(self, other):
-        return (super.__ne__(other))
+        return (super().__ne__(other))
