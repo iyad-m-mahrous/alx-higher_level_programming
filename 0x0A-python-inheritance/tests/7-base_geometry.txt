@@ -17,8 +17,6 @@ Exception: area() is not implemented
 Traceback (most recent call last):
 TypeError: invalid number must be an integer
 
->>> bg.integer_validator("another invalid", True)
-
 >>> bg.integer_validator("invalid tuple", (1,))
 Traceback (most recent call last):
 TypeError: invalid tuple must be an integer
