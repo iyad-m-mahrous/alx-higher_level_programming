@@ -26,12 +26,16 @@ Exception: area() is not implemented
 object at...>>
 
 >>> bg.integer_validator("valid number", 1)
+Traceback (most recent call last):
+TypeError: valid number must be an integer
 
 >>> bg.integer_validator("invalid number", "number")
 Traceback (most recent call last):
 TypeError: invalid number must be an integer
 
 >>> bg.integer_validator("another invalid", True)
+Traceback (most recent call last):
+TypeError: another invalid must be an integer
 
 >>> bg.integer_validator("invalid tuple", (1,))
 Traceback (most recent call last):
@@ -51,11 +55,11 @@ TypeError: absolutely every possible invalid must be an integer
 
 >>> bg.integer_validator("invalid int", -1)
 Traceback (most recent call last):
-ValueError: invalid int must be greater than 0
+TypeError: invalid int must be an integer
 
 >>> bg.integer_validator("invalid int", 0)
 Traceback (most recent call last):
-ValueError: invalid int must be greater than 0
+TypeError: invalid int must be an integer
 
 >>> bg.integer_validator() # doctest: +NORMALIZE_WHITESPACE
 Traceback (most recent call last):
