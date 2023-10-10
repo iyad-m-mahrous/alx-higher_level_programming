@@ -33,6 +33,8 @@ Traceback (most recent call last):
 TypeError: invalid number must be an integer
 
 >>> bg.integer_validator("another invalid", True)
+Traceback (most recent call last):
+TypeError: another invalid must be an integer
 
 >>> bg.integer_validator("invalid tuple", (1,))
 Traceback (most recent call last):
