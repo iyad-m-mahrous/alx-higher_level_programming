@@ -20,6 +20,7 @@ def stats():
 def print_stats(data):
     """def print_stats(data):"""
 
+    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
     global size
     data = data.split("\n")
     data = [row.split(" ") for row in data]
@@ -27,7 +28,10 @@ def print_stats(data):
         if len(data[i]) > 1:
             size += int(data[i][-1])
     print(f"File size: {size}")
-    stat_code = [row[-2] for row in data if len(row) > 1]
+    stat_code = [
+            row[-2] for row in data
+            if len(row) > 1 and row[-2] in valid_codes
+    ]
     new_dict = {ele: stat_code.count(ele) for ele in set(stat_code)}
     new_dict = dict(sorted(new_dict.items()))
     for i in new_dict:
