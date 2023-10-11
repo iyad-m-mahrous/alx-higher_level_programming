@@ -7,15 +7,16 @@ size = 0
 def stats():
     """stats()"""
 
-    count = 1
+    count = 0 
     global data
     for line in sys.stdin:
+        count += 1
         data += (line.strip() + "\n")
         if count == 10:
             print_stats(data)
             count = 0
-        count += 1
-    print_stats(data)
+    if count != 0:
+        print_stats(data)
 
 
 def print_stats(data):
