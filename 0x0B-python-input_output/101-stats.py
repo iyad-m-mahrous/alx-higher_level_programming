@@ -28,8 +28,7 @@ def print_stats(data):
     data = [row.split(" ") for row in data]
     for i in range(len(data)):
         if len(data[i]) > 1:
-            if (data[i][-2] in valid_codes):
-                size += int(data[i][-1])
+            size += int(data[i][-1])
     print(f"File size: {size}")
     stat_code = [
             row[-2] for row in data
