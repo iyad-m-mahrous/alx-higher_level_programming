@@ -9,7 +9,7 @@ for i in range(10):
     sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
         random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
         datetime.datetime.now(),
-        random.choice([200]),
+        random.choice([200, 30, 400, 40, 4, 44, 460, 500]),
         random.randint(1, 1024)
     ))
     sys.stdout.flush()
