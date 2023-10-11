@@ -9,39 +9,32 @@ def stats():
 
     try:
         count = 0
-        data = ""
+        data = {}
+        size = 0
+        valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
         for line in sys.stdin:
+            line = line.strip().split()
+            size += int(line[-1])
+            if line[-2] in valid_codes:
+                data[line[-2]] = 1 if not data.get(line[-2]) \
+                        else data[line[-2]] + 1
             count += 1
-            data += (line.strip() + "\n")
             if count == 10:
-                print_stats(data)
+                print_stats(data, size)
                 count = 0
         if count != 0:
-            print_stats(data)
+            print_stats(data, size)
     except KeyboardInterrupt:
-        print_stats(data)
+        print_stats(data, size)
         raise
 
 
-def print_stats(data):
+def print_stats(data, size):
     """def print_stats(data):"""
 
-    valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
-    global size
-    data = data.split("\n")
-    data = [row.split(" ") for row in data]
-    for i in range(len(data)):
-        if len(data[i]) > 1:
-            size += int(data[i][-1])
     print(f"File size: {size}")
-    stat_code = [
-            row[-2] for row in data
-            if len(row) > 1 and row[-2] in valid_codes
-    ]
-    new_dict = {ele: stat_code.count(ele) for ele in set(stat_code)}
-    new_dict = dict(sorted(new_dict.items()))
-    for i in new_dict:
-        print(f"{i}: {new_dict[i]}")
+    for i in sorted(data):
+        print(f"{i}: {data[i]}")
 
 
 if __name__ == "__main__":
