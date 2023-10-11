@@ -21,12 +21,12 @@ def stats():
             if count == 10:
                 print_stats(data, size)
                 count = 0
+            except (IndexError, ValueError):
+                pass
         print_stats(data, size)
     except KeyboardInterrupt:
         print_stats(data, size)
         raise
-    except (IndexError, ValueError):
-        pass
 
 
 def print_stats(data, size):
