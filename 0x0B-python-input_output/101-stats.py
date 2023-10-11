@@ -27,6 +27,8 @@ def stats():
     except KeyboardInterrupt:
         print_stats(data, size)
         raise
+    except Exception:
+        raise Exception
 
 
 def print_stats(data, size):
