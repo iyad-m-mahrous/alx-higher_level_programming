@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Write a script that reads stdin line by line and computes metrics"""
 import sys
-size = 0
 
 
 def stats():
@@ -27,7 +26,7 @@ def stats():
     except KeyboardInterrupt:
         print_stats(data, size)
         raise
-    except Exception:
+    except (IndexError, ValueError):
         pass
 
 
