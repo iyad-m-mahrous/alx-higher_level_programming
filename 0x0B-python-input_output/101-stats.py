@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Write a script that reads stdin line by line and computes metrics"""
 import sys
+size = 0
 
 
 def stats():
@@ -12,7 +13,6 @@ def stats():
         data += (line.strip() + "\n")
         if count == 10:
             print_stats(data)
-            data = ""
             count = 0
         count += 1
 
@@ -20,7 +20,7 @@ def stats():
 def print_stats(data):
     """def print_stats(data):"""
 
-    size = 0
+    global size
     data = data.split("\n")
     data = [row.split(" ") for row in data]
     for i in range(len(data)):
