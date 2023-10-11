@@ -7,16 +7,20 @@ size = 0
 def stats():
     """stats()"""
 
-    count = 0
-    global data
-    for line in sys.stdin:
-        count += 1
-        data += (line.strip() + "\n")
-        if count == 10:
+    try:
+        count = 0
+        global data
+        for line in sys.stdin:
+            count += 1
+            data += (line.strip() + "\n")
+            if count == 10:
+                print_stats(data)
+                count = 0
+        if count != 0:
             print_stats(data)
-            count = 0
-    if count != 0:
+    except KeyboardInterrupt:
         print_stats(data)
+        raise
 
 
 def print_stats(data):
@@ -42,8 +46,4 @@ def print_stats(data):
 
 if __name__ == "__main__":
     data = ""
-    try:
-        stats()
-    except KeyboardInterrupt:
-        print_stats(data)
-        raise
+    stats()
