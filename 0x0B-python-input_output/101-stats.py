@@ -13,7 +13,7 @@ def stats():
         if count == 10:
             print_stats(data)
             data = ""
-            count = 0 
+            count = 0
         count += 1
 
 
