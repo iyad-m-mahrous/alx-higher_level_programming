@@ -10,8 +10,10 @@ def stats():
     data = ""
     for line in sys.stdin:
         data += (line.strip() + "\n")
-        if count == 3:
+        if count == 10:
             print_stats(data)
+            data = ""
+            count = 0 
         count += 1
 
 
