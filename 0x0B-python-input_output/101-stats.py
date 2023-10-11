@@ -7,7 +7,7 @@ size = 0
 def stats():
     """stats()"""
 
-    count = 0 
+    count = 0
     global data
     for line in sys.stdin:
         count += 1
