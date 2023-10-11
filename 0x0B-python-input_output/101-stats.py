@@ -28,7 +28,7 @@ def stats():
         print_stats(data, size)
         raise
     except Exception:
-        raise Exception
+        pass
 
 
 def print_stats(data, size):
