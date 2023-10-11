@@ -21,8 +21,7 @@ def stats():
             if count == 10:
                 print_stats(data, size)
                 count = 0
-        if count != 0:
-            print_stats(data, size)
+        print_stats(data, size)
     except KeyboardInterrupt:
         print_stats(data, size)
         raise
