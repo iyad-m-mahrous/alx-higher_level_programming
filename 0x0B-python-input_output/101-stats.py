@@ -9,7 +9,7 @@ def stats():
 
     try:
         count = 0
-        global data
+        data
         for line in sys.stdin:
             count += 1
             data += (line.strip() + "\n")
@@ -45,5 +45,4 @@ def print_stats(data):
 
 
 if __name__ == "__main__":
-    data = ""
     stats()
