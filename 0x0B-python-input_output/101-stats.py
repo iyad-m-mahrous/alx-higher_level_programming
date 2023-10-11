@@ -13,14 +13,15 @@ def stats():
         valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
         for line in sys.stdin:
             line = line.strip().split()
-            size += int(line[-1])
-            if line[-2] in valid_codes:
-                data[line[-2]] = 1 if not data.get(line[-2]) \
-                        else data[line[-2]] + 1
-            count += 1
-            if count == 10:
-                print_stats(data, size)
-                count = 0
+            try:
+                size += int(line[-1])
+                if line[-2] in valid_codes:
+                    data[line[-2]] = 1 if not data.get(line[-2]) \
+                            else data[line[-2]] + 1
+                count += 1
+                if count == 10:
+                    print_stats(data, size)
+                    count = 0
             except (IndexError, ValueError):
                 pass
         print_stats(data, size)
