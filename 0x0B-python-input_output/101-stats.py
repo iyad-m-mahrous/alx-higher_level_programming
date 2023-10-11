@@ -8,7 +8,7 @@ def stats():
     """stats()"""
 
     count = 1
-    data = ""
+    global data
     for line in sys.stdin:
         data += (line.strip() + "\n")
         if count == 10:
@@ -35,4 +35,9 @@ def print_stats(data):
 
 
 if __name__ == "__main__":
-    stats()
+    data = ""
+    try:
+        stats()
+    except KeyboardInterrupt:
+        print_stats(data)
+        raise
