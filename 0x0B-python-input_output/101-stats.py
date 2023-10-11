@@ -15,6 +15,7 @@ def stats():
             print_stats(data)
             count = 0
         count += 1
+    print_stats(data)
 
 
 def print_stats(data):
