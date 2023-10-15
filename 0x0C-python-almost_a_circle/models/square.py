@@ -36,15 +36,10 @@ class Square(Rectangle):
                 self.y = args[3]
 
         elif kwargs and len(kwargs) != 0:
-            if (kwargs.get('id')):
-                if kwargs['id'] is not None:
-                    self.id = kwargs['id']
-            if (kwargs.get('size')):
-                self.size = kwargs['size']
-            if (kwargs.get('x')):
-                self.x = kwargs['x']
-            if (kwargs.get('y')):
-                self.y = kwargs['y']
+            self.id = kwargs.get('id', self.id)
+            self.size = kwargs.get('size', self.size)
+            self.x = kwargs.get('x', self.x)
+            self.y = kwargs.get('y', self.y)
 
     def to_dictionary(self):
         return {

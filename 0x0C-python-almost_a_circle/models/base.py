@@ -55,7 +55,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         try:
-            with open(f'{cls.__name}.json', 'r', encoding='UTF-8') as f:
+            with open(f'{cls.__name__}.json', 'r', encoding='UTF-8') as f:
                 list_dict = Base.from_json_string(f.read())
                 return [cls.create(**i) for i in list_dict]
         except IOError:
@@ -63,9 +63,9 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        with open(f'{cls.__name__}.cvs', 'w', encoding='UTF-8') as f:
-            if list_objs is None:
-                json.dump([], f)
+        with open(f'{cls.__name__}.csv', 'w', newline="") as f:
+            if list_objs is None or list_objs == []:
+                f.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
@@ -74,16 +74,11 @@ class Base:
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 for obj in list_objs:
                     writer.writerow(obj.to_dictionary())
-                f.write(
-                        cls.to_json_string(
-                            [i.to_dictionary() for i in list_objs]
-                        )
-                )
 
     @classmethod
     def load_from_file_csv(cls):
         try:
-            with open(f'{cls.__name}.cvs', 'w', encoding='UTF-8') as f:
+            with open(f'{cls.__name__}.csv', 'r', newline="") as f:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:

@@ -92,17 +92,11 @@ class Rectangle(Base):
                 self.y = args[4]
 
         elif kwargs and len(kwargs) != 0:
-            if (kwargs.get('id')):
-                if kwargs['id'] is not None:
-                    self.id = kwargs['id']
-            if (kwargs.get('width')):
-                self.width = kwargs['width']
-            if (kwargs.get('height')):
-                self.height = kwargs['height']
-            if (kwargs.get('x')):
-                self.x = kwargs['x']
-            if (kwargs.get('y')):
-                self.y = kwargs['y']
+            self.id = kwargs.get('id', self.id)
+            self.width = kwargs.get('width', self.width)
+            self.height = kwargs.get('height', self.height)
+            self.x = kwargs.get('x', self.x)
+            self.y = kwargs.get('y', self.y)
 
     def to_dictionary(self):
         return {
