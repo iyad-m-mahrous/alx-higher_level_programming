@@ -30,6 +30,8 @@ class Rectangle(Base):
 
     @property
     def width(self):
+        """def width(self):"""
+
         return self.__width
 
     @width.setter
@@ -42,6 +44,8 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """def height(self):"""
+
         return self.__height
 
     @height.setter
@@ -54,6 +58,8 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """def x(self):"""
+
         return self.__x
 
     @x.setter
@@ -66,6 +72,8 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """def y(self):"""
+
         return self.__y
 
     @y.setter
@@ -77,9 +85,13 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """Return the area of the Rectangle."""
+
         return (self.width * self.height)
 
     def display(self):
+        """Print the Rectangle using the `#` character."""
+
         print('\n'*self.y, end='')
         for row in range(self.height):
             print(' '*self.x, end='')
@@ -88,6 +100,18 @@ class Rectangle(Base):
             print()
 
     def update(self, *args, **kwargs):
+        """Update the Rectangle.
+
+        Args:
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents width attribute
+                - 3rd argument represent height attribute
+                - 4th argument represents x attribute
+                - 5th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
+        """
+
         if args and len(args) != 0:
             no_args = len(args)
             if (no_args > 0):
@@ -110,6 +134,7 @@ class Rectangle(Base):
             self.y = kwargs.get('y', self.y)
 
     def to_dictionary(self):
+        """Return the dictionary representation of a Rectangle."""
         return {
             'id': self.id,
             'width': self.width,
