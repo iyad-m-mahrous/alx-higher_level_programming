@@ -3,6 +3,7 @@ import unittest
 from models.base import Base
 from models.square import Square
 from io import StringIO
+import sys
 
 
 class TestSquare(unittest.TestCase):
@@ -303,20 +304,25 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             s.to_dictionary(1)
 
-
-class TestSquareDisplay(unittest.TestCase):
-    def setUp(self):
-        self.sqr = Square(3, 1, 1)
-        self.expected_output = '\n ###\n ###\n ###\n'
-
-    def test_display_square(self):
+    def test_display_square1(self):
+        sqr = Square(3, 1, 1)
+        expected_output = '\n ###\n ###\n ###\n'
         with StringIO() as output:
-            import sys
             sys.stdout = output
-            self.sqr.display()
+            sqr.display()
             sys.stdout = sys.__stdout__
 
-            self.assertEqual(output.getvalue(), self.expected_output)
+            self.assertEqual(output.getvalue(), expected_output)
+
+    def test_display_square2(self):
+        sqr = Square(3, 0, 0)
+        expected_output = '###\n###\n###\n'
+        with StringIO() as output:
+            sys.stdout = output
+            sqr.display()
+            sys.stdout = sys.__stdout__
+
+            self.assertEqual(output.getvalue(), expected_output)
 
 
 if __name__ == "__main__":
