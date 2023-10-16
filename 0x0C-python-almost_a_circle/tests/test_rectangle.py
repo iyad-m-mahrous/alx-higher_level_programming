@@ -3,6 +3,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
@@ -402,20 +403,25 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
 
-
-class TestRectangleDisplay(unittest.TestCase):
-    def setUp(self):
-        self.rect = Rectangle(3, 2, 1, 1)
-        self.expected_output = '\n ###\n ###\n'
-
-    def test_display_rectangle(self):
+    def test_display_rectangle1(self):
+        rect = Rectangle(3, 2, 1, 1)
+        expected_output = '\n ###\n ###\n'
         with StringIO() as output:
-            import sys
             sys.stdout = output
-            self.rect.display()
+            rect.display()
             sys.stdout = sys.__stdout__
 
-            self.assertEqual(output.getvalue(), self.expected_output)
+            self.assertEqual(output.getvalue(), expected_output)
+
+    def test_display_rectangle2(self):
+        rect = Rectangle(3, 2, 0, 0)
+        expected_output = '###\n###\n'
+        with StringIO() as output:
+            sys.stdout = output
+            rect.display()
+            sys.stdout = sys.__stdout__
+
+            self.assertEqual(output.getvalue(), expected_output)
 
 
 if __name__ == "__main__":
