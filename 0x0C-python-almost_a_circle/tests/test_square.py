@@ -7,6 +7,21 @@ import sys
 
 
 class TestSquare(unittest.TestCase):
+    @classmethod
+    def tearDownClass(self):
+        try:
+            os.remove("Rectangle.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.csv")
+        except IOError:
+            pass
+
     def test_init(self):
         self.assertIsInstance(Square(10), Base)
         self.assertIsInstance(Square(10), Square)
