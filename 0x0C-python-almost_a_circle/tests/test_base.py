@@ -84,12 +84,6 @@ class TestBase(unittest.TestCase):
             Base.to_json_string([], 1)
 
     def test_save_to_file(self):
-        Rectangle.save_to_file([])
-        with open("Rectangle.json", "r") as f:
-            self.assertEqual("[]", f.read())
-        Square.save_to_file([])
-        with open("Square.json", "r") as f:
-            self.assertEqual("[]", f.read())
         r = Rectangle(10, 7, 2, 8, 5)
         Rectangle.save_to_file([r])
         with open("Rectangle.json", "r") as f:
@@ -128,6 +122,15 @@ class TestBase(unittest.TestCase):
             Rectangle.save_to_file()
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual("[]", f.read())
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual("[]", f.read())
 
     def test_from_json_string(self):
         list_input = [{"id": 89, "width": 10, "height": 4}]
