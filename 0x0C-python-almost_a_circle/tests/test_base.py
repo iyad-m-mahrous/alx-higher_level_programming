@@ -84,6 +84,8 @@ class TestBase(unittest.TestCase):
             Base.to_json_string([], 1)
 
     def test_save_to_file(self):
+        Rectangle.save_to_file([])
+        Square.save_to_file([])
         r = Rectangle(10, 7, 2, 8, 5)
         Rectangle.save_to_file([r])
         with open("Rectangle.json", "r") as f:
