@@ -4,6 +4,7 @@ from models.base import Base
 from models.square import Square
 from io import StringIO
 import sys
+import os
 
 
 class TestSquare(unittest.TestCase):
