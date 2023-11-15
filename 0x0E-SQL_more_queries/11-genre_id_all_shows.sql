@@ -5,3 +5,8 @@
 -- If a show doesn’t have a genre, display NULL
 -- You can use only one SELECT statement
 -- The database name will be passed as an argument of the mysql command
+SELECT s.`title`, g.`genre_id`
+  FROM `tv_shows` AS s
+       LEFT JOIN `tv_show_genres` AS g
+       ON s.`id` = g.`show_id`
+ ORDER BY s.`title`, g.`genre_id`;
