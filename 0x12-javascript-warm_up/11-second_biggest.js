@@ -1,12 +1,3 @@
 #!/usr/bin/node
-let max = -Infinity;
-let max2 = 0;
-
-process.argv.forEach((num) => {
-  if (Number(num) > max) {
-    max !== -Infinity ? max2 = max : max2 = 0;
-    max = num;
-  }
-});
-
-console.log(max2);
+const newArray = process.argv.slice(2).map(Number).sort((a, b) => b - a);
+newArray[1] ? console.log(newArray[1]) : console.log(0);
