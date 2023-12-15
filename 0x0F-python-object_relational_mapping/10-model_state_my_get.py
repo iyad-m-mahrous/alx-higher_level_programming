@@ -17,7 +17,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.name == sys.argv[4]).first()
+    state = session.query(State).filter(collate(State.name, 'binary')
+                                        == sys.argv[4]).first()
     if state:
         print(f'{state.id}')
     else:
