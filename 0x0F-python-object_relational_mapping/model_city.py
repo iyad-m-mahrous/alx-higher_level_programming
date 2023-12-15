@@ -5,7 +5,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 from model_state import Base
 
 
-class State(Base):
+class City(Base):
     """Represents a city for a MySQL database.
 
     __tablename__ (str): The name of the MySQL table to store cities.
