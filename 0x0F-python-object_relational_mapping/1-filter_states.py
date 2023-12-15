@@ -13,7 +13,7 @@ if __name__ == '__main__':
         charset="utf8"
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM `states` WHERE name LIKE 'N%'"
+    cur.execute("SELECT * FROM `states` WHERE states.name LIKE 'N%'"
                 "ORDER BY states.id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
