@@ -9,12 +9,11 @@ Base = declarative_base()
 
 
 class State(Base):
-    """ State class: inherits from Base Tips
-    __tablename__: Table Name
-    id:  that represents a column of an auto-generated,
-        unique integer, can’t be null and is a primary key
-    name: that represents a column of a string with
-        maximum 128 characters and can’t be null
+    """Represents a state for a MySQL database.
+
+    __tablename__ (str): The name of the MySQL table to store States.
+    id (sqlalchemy.Integer): The state's id.
+    name (sqlalchemy.String): The state's name.
     """
 
     __tablename__ = 'states'
