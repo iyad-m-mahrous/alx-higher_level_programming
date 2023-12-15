@@ -18,5 +18,5 @@ if __name__ == "__main__":
     session = Session()
     rows = session.query(State)\
         .filter(func.binary(State.name).like('%a%')).all()
-    [delete(row) for row in rows]
+    [session.delete(row) for row in rows]
     session.commit()
