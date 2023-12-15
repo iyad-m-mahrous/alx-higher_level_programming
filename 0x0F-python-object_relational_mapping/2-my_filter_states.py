@@ -13,8 +13,8 @@ if __name__ == '__main__':
         charset="utf8"
     )
     cur = db.cursor()
-    cur.execute(f"SELECT * FROM `states` WHERE states.name = '{sys.argv[4]}'"
-                f"ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM `states` WHERE states.name = '{}'\
+                ORDER BY states.id ASC".format(sys.argv[4]))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
