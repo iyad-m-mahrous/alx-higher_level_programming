@@ -13,7 +13,7 @@ if __name__ == '__main__':
         charset="utf8"
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM `states` WHERE name = '{}'\
+    cur.execute("SELECT * FROM `states` WHERE BINARY name = '{}'\
                 ORDER BY id".format(sys.argv[4]))
     query_rows = cur.fetchall()
     [print(row) for row in query_rows]
