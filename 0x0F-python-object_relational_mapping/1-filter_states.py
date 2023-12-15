@@ -13,8 +13,8 @@ if __name__ == '__main__':
         charset="utf8"
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM `states` WHERE name LIKE 'N%' ORDER BY `id`")
+    cur.execute("SELECT * FROM `states` ORDER BY `id`")
     query_rows = cur.fetchall()
-    [print(row) for row in query_rows]
+    [print(row) for row in query_rows if state[1][0] == "N"]
     cur.close()
     db.close()
