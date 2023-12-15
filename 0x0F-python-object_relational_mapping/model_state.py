@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """ 6. First state model """
 
-from sqlalchemy import Column, String, Integer, ForeignKey, PrimaryKey
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-
 
 class State(Base):
     """Represents a state for a MySQL database.
