@@ -4,7 +4,8 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from relationship_city import Base, City
+
+Base = declarative_base()
 
 
 class State(Base):
@@ -17,7 +18,6 @@ class State(Base):
         cities (sqlalchemy.orm.relationship): The State-City relationship.
     """
     __tablename__ = "states"
-    __table_args__ = {'extend_existing': True}
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
 
